@@ -627,6 +627,15 @@ async fn main_server(req: Request<Body>) -> hyper::Result<Response<Body>> {
       );
       Ok(res)
     }
+    (_, "/cli/tests/024_import_no_ext_with_headers") => {
+      let mut res =
+        Response::new(Body::from(r#"export {};console.log('HELLO');"#));
+      res.headers_mut().insert(
+        "Content-type",
+        HeaderValue::from_static("application/typescript"),
+      );
+      Ok(res)
+    }
     (_, "/.well-known/deno-import-intellisense.json") => {
       let file_path = root_path()
         .join("cli/tests/lsp/registries/deno-import-intellisense.json");

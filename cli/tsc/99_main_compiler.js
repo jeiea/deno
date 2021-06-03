@@ -164,6 +164,10 @@ delete Object.prototype.__proto__;
     // 'http://localhost:4545/cli/tests/subdir/mt_application_x_javascript.j4.js'
     // because it would overwrite input file.
     5055,
+    // TS5056: Cannot write file
+    // 'http://localhost:4545/cli/tests/024_import_no_ext_with_headers.js'
+    // because it would be overwritten by multiple input files.
+    5056,
     // TypeScript is overly opinionated that only CommonJS modules kinds can
     // support JSON imports.  Allegedly this was fixed in
     // Microsoft/TypeScript#26825 but that doesn't seem to be working here,
@@ -270,6 +274,9 @@ delete Object.prototype.__proto__;
           ts.ScriptTarget[languageVersion]
         })`,
       );
+      if (specifier.includes("/bar")) {
+        debugger;
+      }
       let sourceFile = sourceFileCache.get(specifier);
       if (sourceFile) {
         return sourceFile;

@@ -2567,6 +2567,12 @@ mod integration {
     output: "023_no_ext.out",
   });
 
+  itest!(_024_import_no_ext_with_headers {
+    args: "run --reload 024_import_no_ext_with_headers.ts",
+    output: "024_import_no_ext_with_headers.ts.out",
+    http_server: true,
+  });
+
   // TODO(lucacasonato): remove --unstable when permissions goes stable
   itest!(_025_hrtime {
     args: "run --quiet --allow-hrtime --unstable --reload 025_hrtime.ts",
